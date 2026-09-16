@@ -43,4 +43,31 @@ document.addEventListener("DOMContentLoaded", () => {
     if (contactModal) {
         contactModal.classList.add('active');
     }
+
+    // 5. SCROLLSPY: Scroll karte waqt active section ke hisab se navbar links par underline/active aane ke liye
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let currentSection = '';
+        const scrollPos = window.scrollY + 180; // Offset taaki sahi section aane par navbar update ho jaye
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                currentSection = sectionId;
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            // Agar link ka href section ki id se match karta hai toh use active/underline kar do
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
+    });
 });
