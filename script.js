@@ -1,4 +1,3 @@
-// Navigation active link toggle
 document.addEventListener("DOMContentLoaded", () => {
     const links = document.querySelectorAll('.nav-links a');
     links.forEach(link => {
@@ -44,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         contactModal.classList.add('active');
     }
 
-    // 5. SCROLLSPY LOGIC: Scroll ke sath menu par underline aane ke liye
+    // 5. COMBINED SCROLLSPY LOGIC (Sections + Footer / Contact Underline Fix)
     let hasOpenedOnScroll = false;
     window.addEventListener('scroll', () => {
         if (window.scrollY === 0 && !hasOpenedOnScroll && contactModal) {
@@ -54,22 +53,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let currentSection = '';
         const scrollPos = window.scrollY + 180;
-        const sections = document.querySelectorAll('section');
+        const sections = document.querySelectorAll('section, footer'); // Footer/Contact bhi included hai
         const navLinks = document.querySelectorAll('.nav-links a');
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
+        // Agar user scroll karke bilkul niche (footer/contact) par pahunch gaya hai
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+            currentSection = 'contact';
+        } else {
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
 
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                currentSection = sectionId;
-            }
-        });
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    currentSection = sectionId;
+                }
+            });
+        }
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            // Yahan bracket theek kar di gayi hai
             if (link.getAttribute('href') === `#${currentSection}`) {
                 link.classList.add('active');
             }
