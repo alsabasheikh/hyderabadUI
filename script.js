@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- Let's Talk Modal Logic ---
+    // --- Let's Talk Modal & Scroll Logic ---
     const letsTalkBtns = document.querySelectorAll('.lets-talk-btn');
     const contactModal = document.getElementById('contactModal');
     const closeModalBtn = document.getElementById('closeModal');
@@ -39,18 +39,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. WEBSITE KHOLTE HI (Page Load par) TURANT POPUP DIKHANE KE LIYE
+    // 4. WEBSITE KHOLTE HI TURANT POPUP DIKHANE KE LIYE
     if (contactModal) {
         contactModal.classList.add('active');
     }
 
-    // 5. SCROLLSPY: Scroll karte waqt active section ke hisab se navbar links par underline/active aane ke liye
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
+    // 5. SCROLLSPY LOGIC: Scroll ke sath menu par underline aane ke liye
+    let hasOpenedOnScroll = false;
     window.addEventListener('scroll', () => {
+        if (window.scrollY === 0 && !hasOpenedOnScroll && contactModal) {
+            contactModal.classList.add('active');
+            hasOpenedOnScroll = true;
+        }
+
         let currentSection = '';
-        const scrollPos = window.scrollY + 180; // Offset taaki sahi section aane par navbar update ho jaye
+        const scrollPos = window.scrollY + 180;
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -64,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            // Agar link ka href section ki id se match karta hai toh use active/underline kar do
+            // Yahan bracket theek kar di gayi hai
             if (link.getAttribute('href') === `#${currentSection}`) {
                 link.classList.add('active');
             }

@@ -1109,3 +1109,26 @@ body {
 .btn-submit:hover {
     opacity: 0.9;
 }
+/* Navbar Active Link Underline Effect */
+.nav-links a {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Underline banane ke liye pseudo-element */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00e5ff; /* Glowing cyan color */
+    transition: width 0.3s ease-in-out;
+}
+
+/* Jab link active ho ya hover ho, tab underline full width ho jaye */
+.nav-links a.active::after,
+.nav-links a:hover::after {
+    width: 100%;
+}
