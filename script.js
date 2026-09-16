@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- Let's Talk Modal & Scroll Logic ---
+    // --- Let's Talk Modal Logic ---
     const letsTalkBtns = document.querySelectorAll('.lets-talk-btn');
     const contactModal = document.getElementById('contactModal');
     const closeModalBtn = document.getElementById('closeModal');
@@ -39,12 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. Jab user website ko bilkul starting (top) par scroll kare
-    let hasOpenedOnScroll = false;
-    window.addEventListener('scroll', () => {
-        if (window.scrollY === 0 && !hasOpenedOnScroll && contactModal) {
-            contactModal.classList.add('active');
-            hasOpenedOnScroll = true; // Taaki baar-baar scroll karne par baar-baar na khule
-        }
-    });
+    // 4. WEBSITE KHOLTE HI (Page Load par) TURANT POPUP DIKHANE KE LIYE
+    if (contactModal) {
+        contactModal.classList.add('active');
+    }
 });
