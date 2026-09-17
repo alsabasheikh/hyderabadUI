@@ -79,3 +79,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+document.addEventListener("DOMContentLoaded", function() {
+    const contactModal = document.getElementById("contact"); // Agar aapke HTML modal ki id "contact" hai
+    const closeModalBtn = document.getElementById("closeModal");
+    const letsTalkBtns = document.querySelectorAll(".lets-talk-btn"); // "Let's Talk" buttons ke liye
+
+    // 1. Website khulte hi (Page Load par) popup dikhane ke liye
+    if (contactModal) {
+        contactModal.classList.add("active");
+    }
+
+    // 2. "Let's Talk" buttons par click karne par popup khulne ke liye
+    letsTalkBtns.forEach(button => {
+        button.addEventListener("click", function(e) {
+            e.preventDefault(); // Page upar scroll hone se rokne ke liye
+            if (contactModal) {
+                contactModal.classList.add("active");
+            }
+        });
+    });
+
+    // 3. Close (X) button par click karne par popup band hone ke liye
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener("click", function() {
+            contactModal.classList.remove("active");
+        });
+    }
+
+    // 4. Modal ke bahar dark area par click karne par bhi popup band ho jaye
+    window.addEventListener("click", function(e) {
+        if (e.target === contactModal) {
+            contactModal.classList.remove("active");
+        }
+    });
+});
