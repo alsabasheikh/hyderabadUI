@@ -1,53 +1,28 @@
 * {
-
     margin: 0;
-
     padding: 0;
-
     box-sizing: border-box;
-
     font-family: 'Inter', sans-serif;
-
 }
-
-
 
 body {
-
     background-color: #0b1329;
-
     color: #ffffff;
-
     overflow-x: hidden;
-
 }
 
-
-
 /* Navbar */
-
 .navbar {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     height: 90px;
-
     padding: 0 50px;
-
-    background-color: #0b1329;
-
+    background: linear-gradient(135deg, #0b1329 0%, #1a2542 50%, #070d1d 100%);
     position: sticky;
-
     top: 0;
-
     z-index: 1000;
-
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
 }
 
 .logo-container {
@@ -80,917 +55,462 @@ body {
     border-radius: 6px;
     position: relative;
     z-index: 1;
-    margin-top: -10px; /* Isse logo upar shift ho jayega */
+    margin-top: -10px;
 }
-
-
 
 .nav-links {
-
     display: flex;
-
     gap: 35px;
-
 }
-
-
 
 .nav-links a {
-
     text-decoration: none;
-
     color: #b0bec5;
-
     font-size: 15px;
-
     font-weight: 500;
-
+    position: relative;
+    padding-bottom: 5px;
     transition: color 0.3s;
-
 }
 
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00e5ff;
+    transition: width 0.3s ease-in-out;
+}
 
-
-.nav-links a:hover, .nav-links a.active {
-
+.nav-links a:hover, 
+.nav-links a.active {
     color: #ffffff;
-
 }
 
-
+.nav-links a.active::after,
+.nav-links a:hover::after {
+    width: 100%;
+}
 
 .nav-links i {
-
     font-size: 11px;
-
     margin-left: 4px;
-
 }
-
-
 
 /* Buttons */
-
 .btn-primary {
-
     background: linear-gradient(90deg, #00b4db, #0083b0);
-
     color: white;
-
     padding: 10px 22px;
-
     border-radius: 50px;
-
     text-decoration: none;
-
     font-weight: 600;
-
     font-size: 14px;
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 8px;
-
     transition: opacity 0.3s;
-
 }
-
-
 
 .btn-primary:hover {
-
     opacity: 0.9;
-
 }
-
-
 
 .btn-outline {
-
     border: 1px solid rgba(255, 255, 255, 0.2);
-
     color: white;
-
     padding: 10px 22px;
-
     border-radius: 50px;
-
     text-decoration: none;
-
     font-weight: 600;
-
     font-size: 14px;
-
     transition: background 0.3s;
-
 }
-
-
 
 .btn-outline:hover {
-
     background: rgba(255, 255, 255, 0.05);
-
 }
-
-
 
 /* Hero Section */
-
 .hero-section {
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     padding: 30px 60px;
-
     min-height: 70vh;
-
     background: radial-gradient(circle at 20% 30%, #101d3f 0%, #0b1329 70%);
-
 }
-
-
 
 .hero-content {
-
     max-width: 55%;
-
 }
-
-
 
 .badge {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 8px;
-
     background: rgba(0, 229, 255, 0.08);
-
     border: 1px solid rgba(0, 229, 255, 0.2);
-
     color: #00e5ff;
-
     padding: 6px 16px;
-
     border-radius: 30px;
-
     font-size: 13px;
-
     margin-bottom: 25px;
-
 }
-
-
 
 .hero-content h1 {
-
     font-size: 48px;
-
     line-height: 1.2;
-
     font-weight: 800;
-
     margin-bottom: 20px;
-
 }
-
-
 
 .hero-content h1 span {
-
     color: #00e5ff;
-
 }
-
-
 
 .hero-content h1 span:last-child {
-
     color: #ffb74d;
-
 }
-
-
 
 .hero-content p {
-
     color: #94a3b8;
-
     font-size: 16px;
-
     margin-bottom: 30px;
-
     line-height: 1.6;
-
 }
-
-
 
 .hero-buttons {
-
     display: flex;
-
     gap: 15px;
-
 }
-
-
 
 .hero-image-container {
-
     max-width: 42%;
-
 }
-
-
 
 .hero-img {
-
     width: 100%;
-
     border-radius: 12px;
-
     box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-
 }
-
-
 
 /* Services Ticker / Automatic Smooth Sliding Blocks */
-
 .services-ticker-container {
-
     background-color: #070d1d;
-
     overflow: hidden;
-
     padding: 20px 0;
-
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
     white-space: nowrap;
-
     position: relative;
-
 }
-
-
 
 .services-track {
-
     display: inline-flex;
-
     gap: 25px;
-
     animation: scrollTicker 30s linear infinite;
-
 }
-
-
 
 .services-ticker-container:hover .services-track {
-
     animation-play-state: paused;
-
 }
-
-
 
 @keyframes scrollTicker {
-
     0% {
-
         transform: translateX(0);
-
     }
-
     100% {
-
         transform: translateX(-50%);
-
     }
-
 }
-
-
 
 /* Individual Box Block Style */
-
 .service-item {
-
     display: inline-flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
     text-align: center;
-
     color: #ffffff;
-
     font-size: 14px;
-
     font-weight: 500;
-
     gap: 12px;
-
     padding: 20px 30px;
-
     border-radius: 16px;
-
     background-color: #111a36;
-
     border: 1px solid rgba(0, 229, 255, 0.3);
-
     min-width: 210px;
-
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-
     transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-
 }
-
-
 
 .service-item i {
-
     color: #00e5ff;
-
     font-size: 26px;
-
 }
-
-
 
 .service-item:hover {
-
     transform: translateY(-4px);
-
     background-color: #17254c;
-
     border-color: #00e5ff;
-
 }
 
-
-
-/* Main Services Section (Pure White Background) */
-
+/* Main Services Section */
 .services-section {
-
     padding: 90px 60px;
-
     background-color: #ffffff;
-
     color: #0b1329;
-
 }
-
-
 
 .section-header {
-
     text-align: center;
-
     max-width: 700px;
-
     margin: 0 auto 60px auto;
-
 }
-
-
 
 .sub-heading {
-
     color: #0083b0;
-
     font-size: 13px;
-
     font-weight: 600;
-
     letter-spacing: 2px;
-
     display: block;
-
     margin-bottom: 10px;
-
 }
-
-
 
 .section-header h2 {
-
     font-size: 36px;
-
     font-weight: 700;
-
     color: #0b1329;
-
     margin-bottom: 15px;
-
 }
-
-
 
 .section-header p {
-
     color: #556270;
-
     font-size: 15px;
-
 }
-
-
 
 .services-grid {
-
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 30px;
-
-}
-.navbar {
-    background: linear-gradient(135deg, #0b1329 0%, #1a2542 50%, #070d1d 100%);
-    /* Agar aur glow chahiye toh box-shadow ya background glow add kar sakte hain */
 }
 
-
-/* Service Card - 3D Light Blue Overlay Block on White BG */
-
+/* Service Card */
 .service-card {
-
     background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
-
     border: 1px solid #d4e5ff;
-
     padding: 40px 30px;
-
     border-radius: 20px;
-
     transition: all 0.4s ease;
-
     position: relative;
-
     box-shadow: 0 10px 30px rgba(0, 123, 255, 0.08);
-
 }
-
-
 
 .service-card:hover {
-
     transform: translateY(-8px);
-
     border-color: #0099ff;
-
     box-shadow: 0 20px 45px rgba(0, 140, 255, 0.18);
-
     background: linear-gradient(135deg, #f4f8ff 0%, #dceeff 100%);
-
 }
-
-
 
 .card-icon {
-
     width: 60px;
-
     height: 60px;
-
     background: linear-gradient(135deg, rgba(0, 140, 255, 0.12), rgba(0, 115, 230, 0.22));
-
     color: #0077cc;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     border-radius: 16px;
-
     font-size: 24px;
-
     margin-bottom: 25px;
-
     transition: all 0.3s ease;
-
 }
-
-
 
 .service-card:hover .card-icon {
-
     background: linear-gradient(135deg, #0099ff, #0066cc);
-
     color: #ffffff;
-
     transform: scale(1.05);
-
 }
-
-
 
 .service-card h3 {
-
     font-size: 20px;
-
     font-weight: 700;
-
     color: #0b1329;
-
     margin-bottom: 12px;
-
 }
-
-
 
 .service-card p {
-
     color: #556677;
-
     font-size: 14px;
-
     line-height: 1.6;
-
     margin-bottom: 25px;
-
 }
-
-
 
 .card-arrow {
-
     width: 40px;
-
     height: 40px;
-
     background: #d8ecff;
-
     color: #0066cc;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     border-radius: 50%;
-
     text-decoration: none;
-
     transition: all 0.3s ease;
-
 }
-
-
 
 .service-card:hover .card-arrow {
-
     background: #0077cc;
-
     color: #ffffff;
-
     transform: translateX(4px);
-
 }
-
-
 
 /* Stats Banner */
-
 .stats-banner {
-
     background: linear-gradient(135deg, #0d1735, #070e22);
-
     margin: 0 60px;
-
     padding: 40px;
-
     border-radius: 20px;
-
     display: flex;
-
     justify-content: space-around;
-
     align-items: center;
-
     border: 1px solid rgba(255, 255, 255, 0.05);
-
 }
-
-
 
 .stat-box {
-
     display: flex;
-
     align-items: center;
-
     gap: 18px;
-
 }
-
-
 
 .stat-box i {
-
     font-size: 28px;
-
     color: #00e5ff;
-
 }
-
-
 
 .stat-box h3 {
-
     font-size: 26px;
-
     font-weight: 700;
-
 }
-
-
 
 .stat-box p {
-
     color: #94a3b8;
-
     font-size: 13px;
-
 }
-
-
 
 .stat-badge-text {
-
     border-left: 1px solid rgba(255, 255, 255, 0.1);
-
     padding-left: 20px;
-
     font-size: 14px;
-
     font-weight: 600;
-
     color: #ffb74d;
-
     line-height: 1.4;
-
 }
-
-
 
 /* Local Presence Section */
-
 .local-presence {
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     padding: 90px 60px;
-
     gap: 50px;
-
 }
-
-
 
 .presence-left {
-
     max-width: 50%;
-
 }
-
-
 
 .presence-left h2 {
-
     font-size: 38px;
-
     font-weight: 700;
-
     margin-bottom: 15px;
-
 }
-
-
 
 .presence-left p {
-
     color: #94a3b8;
-
     font-size: 15px;
-
     line-height: 1.6;
-
     margin-bottom: 25px;
-
 }
-
-
 
 .features-list {
-
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 15px;
-
 }
-
-
 
 .feature-row {
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     font-size: 14px;
-
     font-weight: 500;
-
 }
-
-
 
 .feature-row i {
-
     color: #00e5ff;
-
 }
-
-
 
 .presence-right {
-
     max-width: 48%;
-
     width: 100%;
-
     background: url('charminarImage.png') center/cover no-repeat;
-
     border-radius: 20px;
-
     overflow: hidden;
-
     position: relative;
-
     min-height: 380px;
-
     display: flex;
-
     align-items: flex-end;
-
 }
-
-
 
 .card-overlay-box {
-
     background: linear-gradient(to top, rgba(7, 13, 29, 0.95), rgba(7, 13, 29, 0.7));
-
     width: 100%;
-
     padding: 30px;
-
 }
-
-
 
 .location-tag {
-
     color: #00e5ff;
-
     font-size: 13px;
-
     margin-bottom: 10px;
-
 }
-
-
 
 .card-overlay-box p {
-
     font-size: 16px;
-
     line-height: 1.5;
-
     margin-bottom: 20px;
-
 }
-
-
 
 .card-overlay-box p span {
-
     color: #00e5ff;
-
 }
-
-
 
 .mini-logo {
-
     font-weight: 700;
-
     font-size: 16px;
-
     display: flex;
-
     align-items: center;
-
     gap: 8px;
-
 }
-
-
 
 .mini-logo span {
-
     color: #fff;
-
     font-weight: 400;
-
     font-size: 14px;
-
 }
 
-
-
-/* Responsive Design */
-
-@media (max-width: 1024px) {
-
-    .hero-section, .local-presence {
-
-        flex-direction: column;
-
-        text-align: center;
-
-    }
-
-    .hero-content, .presence-left {
-
-        max-width: 100%;
-
-    }
-
-    .hero-image-container, .presence-right {
-
-        max-width: 100%;
-
-        width: 100%;
-
-        margin-top: 30px;
-
-    }
-
-    .services-grid {
-
-        grid-template-columns: repeat(2, 1fr);
-
-    }
-
-    .stats-banner {
-
-        flex-direction: column;
-
-        gap: 20px;
-
-    }
-
-}
-/* Contact White Popup Modal Styling */
+/* Contact Popup Modal Styling (No Blur, Taller Look) */
 .contact-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(7, 13, 29, 0.8);
+    background-color: rgba(7, 13, 29, 0.8); /* Normal dark background without blur */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1000,7 +520,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Jab modal active/open hoga */
 .contact-modal.active {
     opacity: 1;
     visibility: visible;
@@ -1009,32 +528,32 @@ body {
 .modal-content-box {
     background: #ffffff;
     color: #0b1329;
-    width: 380px;           /* 480px se kam karke 380px kar diya */
-    height: 520px;          /* 720px se kam karke 520px kar diya */
+    width: 400px;          
+    height: auto;          
     max-width: 90%;
-    max-height: 85vh;
-    overflow-y: auto;
-    padding: 25px;          /* Padding bhi thodi kam kar di taaki space bache */
+    max-height: 90vh;
+    overflow: hidden;
+    padding: 35px 25px;        /* Top aur Bottom se lamba/taller look dene ke liye badhayi gayi padding */
     border-radius: 20px;
     position: relative;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
     transform: translateY(-20px);
     transition: transform 0.3s ease;
-    scroll-behavior: smooth;
 }
+
 .contact-modal.active .modal-content-box {
     transform: translateY(0);
 }
 
 .modal-close-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     background: #f0f7ff;
     border: none;
-    font-size: 22px;
-    width: 35px;
-    height: 35px;
+    font-size: 20px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     cursor: pointer;
     color: #0b1329;
@@ -1051,18 +570,18 @@ body {
 
 .modal-subtitle {
     color: #0083b0;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.5px;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .modal-content-box h2 {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 800;
     color: #0b1329;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     line-height: 1.2;
 }
 
@@ -1072,22 +591,21 @@ body {
 
 .modal-desc {
     color: #556270;
-    font-size: 14px;
-    margin-bottom: 25px;
+    font-size: 13px;
+    margin-bottom: 12px;
 }
 
 .contact-form .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form input {
     width: 100%;
-    padding: 12px 16px;
+    padding: 9px 14px;
     border: 1px solid #d4e5ff;
     background: #f9fbff;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 13px;
     color: #0b1329;
     outline: none;
     transition: border-color 0.3s;
@@ -1098,49 +616,40 @@ body {
     border-color: #0083b0;
 }
 
+.contact-form textarea {
+    width: 100%;
+    padding: 7px 14px;
+    height: 48px;          
+    border: 1px solid #d4e5ff;
+    background: #f9fbff;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #0b1329;
+    outline: none;
+    resize: none;
+}
+
 .btn-submit {
     width: 100%;
     background: linear-gradient(90deg, #00b4db, #0083b0);
     color: white;
-    padding: 12px;
+    padding: 10px;
     border: none;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
     cursor: pointer;
     transition: opacity 0.3s;
-    margin-top: 10px;
+    margin-top: 6px;
 }
 
 .btn-submit:hover {
     opacity: 0.9;
 }
-/* Navbar Active Link Underline Effect */
-.nav-links a {
-    position: relative;
-    padding-bottom: 5px;
-}
 
-/* Underline banane ke liye pseudo-element */
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #00e5ff; /* Glowing cyan color */
-    transition: width 0.3s ease-in-out;
-}
-
-/* Jab link active ho ya hover ho, tab underline full width ho jaye */
-.nav-links a.active::after,
-.nav-links a:hover::after {
-    width: 100%;
-}
 /* Footer Styling */
 .site-footer {
-    background-color: #070d1d; /* Dark blue background */
+    background-color: #070d1d;
     color: #ffffff;
     padding: 60px 60px 20px 60px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -1210,31 +719,26 @@ body {
     color: #64748b;
     font-size: 13px;
 }
-/* Dark Blue Footer Styling */
-.site-footer {
-    background-color: #070d1d; 
-    color: #ffffff;
-    padding: 60px 60px 20px 60px;
-}
 
-/* Navbar Underline Effect */
-.nav-links a {
-    position: relative;
-    padding-bottom: 5px;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #00e5ff;
-    transition: width 0.3s ease-in-out;
-}
-
-.nav-links a.active::after,
-.nav-links a:hover::after {
-    width: 100%;
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-section, .local-presence {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content, .presence-left {
+        max-width: 100%;
+    }
+    .hero-image-container, .presence-right {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 30px;
+    }
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .stats-banner {
+        flex-direction: column;
+        gap: 20px;
+    }
 }

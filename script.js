@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Navigation Links Active State Logic
     const links = document.querySelectorAll('.nav-links a');
     links.forEach(link => {
         link.addEventListener('click', function() {
@@ -7,12 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- Let's Talk Modal & Scroll Logic ---
-    const letsTalkBtns = document.querySelectorAll('.lets-talk-btn');
-    const contactModal = document.getElementById('contactModal');
+    // 2. Modal Selectors (Aapke HTML ke mutabiq id="contact" set hai)
+    const contactModal = document.getElementById('contact');
     const closeModalBtn = document.getElementById('closeModal');
+    const letsTalkBtns = document.querySelectorAll('.lets-talk-btn');
 
-    // 1. "Let's Talk" buttons par click karne par modal kholne ke liye
+    // 3. "Let's Talk" buttons par click karne par modal kholne ke liye
     letsTalkBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -22,14 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 2. Close (X) button par click karne par modal band karne ke liye
+    // 4. Close (X) button par click karne par modal band karne ke liye
     if (closeModalBtn && contactModal) {
         closeModalBtn.addEventListener('click', () => {
             contactModal.classList.remove('active');
         });
     }
 
-    // 3. Modal ke bahar dark background par click karne par bhi modal band ho jaye
+    // 5. Modal ke bahar dark background par click karne par modal band ho jaye
     if (contactModal) {
         contactModal.addEventListener('click', (e) => {
             if (e.target === contactModal) {
@@ -38,12 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. WEBSITE KHOLTE HI TURANT POPUP DIKHANE KE LIYE
+    // 6. WEBSITE KHOLTE HI TURANT POPUP DIKHANE KE LIYE (Agar aap chahte hain)
+    // Agar page load hote hi popup nahi chahiye, toh aap is line ko hata sakte hain.
     if (contactModal) {
         contactModal.classList.add('active');
     }
 
-    // 5. COMBINED SCROLLSPY LOGIC (Sections + Footer / Contact Underline Fix)
+    // 7. Combined Scrollspy Logic (Sections + Footer / Contact Underline Fix)
     let hasOpenedOnScroll = false;
     window.addEventListener('scroll', () => {
         if (window.scrollY === 0 && !hasOpenedOnScroll && contactModal) {
@@ -53,10 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let currentSection = '';
         const scrollPos = window.scrollY + 180;
-        const sections = document.querySelectorAll('section, footer'); // Footer/Contact bhi included hai
+        const sections = document.querySelectorAll('section, footer');
         const navLinks = document.querySelectorAll('.nav-links a');
 
-        // Agar user scroll karke bilkul niche (footer/contact) par pahunch gaya hai
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
             currentSection = 'contact';
         } else {
@@ -77,39 +78,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.classList.add('active');
             }
         });
-    });
-});
-document.addEventListener("DOMContentLoaded", function() {
-    const contactModal = document.getElementById("contact"); // Agar aapke HTML modal ki id "contact" hai
-    const closeModalBtn = document.getElementById("closeModal");
-    const letsTalkBtns = document.querySelectorAll(".lets-talk-btn"); // "Let's Talk" buttons ke liye
-
-    // 1. Website khulte hi (Page Load par) popup dikhane ke liye
-    if (contactModal) {
-        contactModal.classList.add("active");
-    }
-
-    // 2. "Let's Talk" buttons par click karne par popup khulne ke liye
-    letsTalkBtns.forEach(button => {
-        button.addEventListener("click", function(e) {
-            e.preventDefault(); // Page upar scroll hone se rokne ke liye
-            if (contactModal) {
-                contactModal.classList.add("active");
-            }
-        });
-    });
-
-    // 3. Close (X) button par click karne par popup band hone ke liye
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener("click", function() {
-            contactModal.classList.remove("active");
-        });
-    }
-
-    // 4. Modal ke bahar dark area par click karne par bhi popup band ho jaye
-    window.addEventListener("click", function(e) {
-        if (e.target === contactModal) {
-            contactModal.classList.remove("active");
-        }
     });
 });
