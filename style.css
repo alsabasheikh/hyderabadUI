@@ -30,6 +30,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 8px 12px; /* Yahan padding di gayi hai */
 }
 
 /* Logo ke peeche glowing background effect */
@@ -37,10 +38,10 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    left: 45%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
     background: radial-gradient(circle, rgba(0, 229, 255, 0.25) 0%, rgba(11, 19, 41, 0) 70%);
     border-radius: 50%;
     z-index: 0;
@@ -49,13 +50,13 @@ body {
 }
 
 .nav-logo-icon {
-    height: 95px;    
+    height: 65px;    /* Logo ka size chhota aur balanced kiya gaya hai */
     width: auto;    
     object-fit: contain;
     border-radius: 6px;
     position: relative;
     z-index: 1;
-    margin-top: -10px;
+    margin-top: 0;
 }
 
 .nav-links {
@@ -503,14 +504,14 @@ body {
     font-size: 14px;
 }
 
-/* Contact Popup Modal Styling (No Blur, Taller Look) */
+/* Contact Popup Modal Styling */
 .contact-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(7, 13, 29, 0.8); /* Normal dark background without blur */
+    background-color: rgba(7, 13, 29, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -533,7 +534,7 @@ body {
     max-width: 90%;
     max-height: 90vh;
     overflow: hidden;
-    padding: 35px 25px;        /* Top aur Bottom se lamba/taller look dene ke liye badhayi gayi padding */
+    padding: 35px 25px;        
     border-radius: 20px;
     position: relative;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
